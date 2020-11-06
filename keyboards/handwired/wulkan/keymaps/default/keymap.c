@@ -43,6 +43,23 @@ enum my_keycodes {
   GAME_OFF
 };
 
+// when adding combos don't forget to update COMBO_COUNT in conig.h
+enum combos {
+  CMD_RIGHT,
+  CMD_LEFT,
+  CMD_PLUS,
+};
+
+const uint16_t PROGMEM cmd_right_combo[] = {KC_LGUI, KC_RGHT, COMBO_END};
+const uint16_t PROGMEM cmd_left_combo[] = {KC_LGUI, KC_LEFT, COMBO_END};
+const uint16_t PROGMEM cmd_plus_combo[] = {KC_LGUI, KC_EQL, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+  [CMD_RIGHT] = COMBO(cmd_right_combo, KC_END),
+  [CMD_LEFT] = COMBO(cmd_left_combo, KC_HOME),
+  [CMD_PLUS] = COMBO(cmd_plus_combo, KC_F1),
+};
+
 #define LOWER  MO(_LOWER)
 #define RAISE  MO(_RAISE)
 
@@ -82,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_ortho_5x12(
-  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,        KC_F8,      KC_F9,  KC_F10,  KC_F11,  KC_F12,
+    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,      KC_F8,      KC_F9,  KC_F10,  KC_F11,  KC_F12,
   _______, _______, _______, _______, _______, _______, _______,    _______,    KC_LBRC, KC_RBRC, KC_BSLS,  KC_DEL, 
   _______, _______, _______, _______, _______, _______, _______,    _______,    _______, _______, _______,  KC_GRV,
   _______, _______, _______, _______, _______, _______, KC_UNDS, S(KC_NUHS), S(KC_NUBS), _______, KC_VOLU, KC_MPLY,
@@ -142,7 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |      |      | Space|      |      |GAMEOF|      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_GAMING] = LAYOUT_ortho_5x12(

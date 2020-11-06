@@ -32,7 +32,7 @@ then I just followed the next compile section below
 ### To compile:
 1. open MinGW64
 1. `PATH=$PATH:/C/Users/ofekp/.local/bin`
-1. `cd /C/Users/ofekp/qmk_firmware`
+1. `cd /D/QMK/qmk_firmware`
 1. Only after fist clone - `make git-submodule`
 1. `qmk compile -kb handwired/wulkan -km default`
 
@@ -58,3 +58,12 @@ https://docs.qmk.fm/#/feature_unicode?id=input-modes
 https://beta.docs.qmk.fm/using-qmk/software-features/feature_unicode
 for windows use UC_WINC which requires installing [WinCompose](https://github.com/samhocevar/wincompose)
 https://www.compart.com/en/unicode/block/U+0370
+
+### Combos
+https://beta.docs.qmk.fm/using-qmk/software-features/feature_combo
+
+### Issues
+I had to add `NO_USB_STARTUP_CHECK = yes` to rules.mk otherwise the keeb was unresposive after OS boot
+
+### TODO
+1. CMD + right arrow, CMD + left arrow = up, home
